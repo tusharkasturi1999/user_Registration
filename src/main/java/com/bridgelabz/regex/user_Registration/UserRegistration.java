@@ -11,10 +11,9 @@ public class UserRegistration {
 	public static final Scanner sc = new Scanner(System.in);
 	public final String FIRST_NAME_PATTERN = "^[A-Z]{1}[a-z]{2,}$";
 	public final String LAST_NAME_PATTERN = "^[A-Z]{1}[a-z]{2,}$";
-	public final String EMAIL_PATTERN = "[a-z0-9_]*[.a-z0-9_]*?@[a-z]*.[a-z]*[.a-z]?$";
+	public final String EMAIL_PATTERN = "[a-z0-9_+-]*[.a-z0-9_+-]*?@[a-z0-9]*.[a-z]*[.a-z]*?$";
 	public final String PHONE_PATTERN = "^[0-9]{2}[0-9]{10}$";
 	public final String PASSWORD_PATTERN = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()]).{8,}$";
-
 
 	// This method checks if the entered first name is valid
 	public boolean validateFirstName(String fname) {
@@ -46,6 +45,16 @@ public class UserRegistration {
 		return pattern.matcher(password).matches();
 	}
 
+	//Method for printing validate email output;
+	public void emailTest(String email) {
+		System.out.print(email+ "->");
+		if (validateEmail(email)) {
+			System.out.printf("Email Valid \n");
+		} else {
+			System.out.printf("Email Invalid \n");
+		}
+	}
+	
 	// This is the main function
 	public static void main(String[] args) {
 
@@ -83,12 +92,23 @@ public class UserRegistration {
 			System.out.println("Phone No. Invalid");
 		}
 		
-		System.out.println("\nEnter Password (Min 8 characters with Atleast 1 Uppercase, 1 Numeric Digit): ");
+		System.out.println("\nEnter Password (Min 8 characters with Atleast 1 Uppercase, 1 Numeric Digit, 1 Special Character): ");
 		String password = sc.next();
 		if (obj.validatePassword(password)) {
 			System.out.println("Password Valid");
 		} else {
 			System.out.println("Password Invalid");
 		}
+		
+		System.out.println("\nSamples Emails to Test");
+		obj.emailTest("abc@yahoo.com");
+		obj.emailTest("abc-100@yahoo.com");
+		obj.emailTest("abc.100@yahoo.com");
+		obj.emailTest("abc111@abc.com");
+		obj.emailTest("abc-100@abc.net");
+		obj.emailTest("abc.100@abc.com.au");
+		obj.emailTest("abc@1.com");
+		obj.emailTest("abc@gmail.com.com");
+		obj.emailTest("abc+100@gmail.com");
 	}
 }

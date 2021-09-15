@@ -13,7 +13,8 @@ public class UserRegistration {
 	public final String LAST_NAME_PATTERN = "^[A-Z]{1}[a-z]{2,}$";
 	public final String EMAIL_PATTERN = "[a-z0-9_]*[.a-z0-9_]*?@[a-z]*.[a-z]*[.a-z]?$";
 	public final String PHONE_PATTERN = "^[0-9]{2}[0-9]{10}$";
-	public final String PASSWORD_PATTERN = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
+	public final String PASSWORD_PATTERN = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()]).{8,}$";
+
 
 	// This method checks if the entered first name is valid
 	public boolean validateFirstName(String fname) {

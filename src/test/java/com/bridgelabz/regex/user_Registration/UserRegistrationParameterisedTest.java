@@ -1,6 +1,5 @@
 package com.bridgelabz.regex.user_Registration;
 
-
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
@@ -23,7 +22,7 @@ public class UserRegistrationParameterisedTest {
 		object = new UserRegistration();
 	}
 
-	//Constructor
+	// Constructor
 	public UserRegistrationParameterisedTest(String input, boolean expected) {
 		super();
 		this.input = input;
@@ -31,17 +30,20 @@ public class UserRegistrationParameterisedTest {
 
 	}
 
-
-
-	@Parameterized.Parameters	
+	@Parameterized.Parameters
 	public static Collection<Object[]> input() {
 
-		return Arrays.asList(new Object[][] { {"abc@yahoo.com",true }, { "abc",true }, { "abc-100@yahoo.com",true }, {"abc@.com.my",true}, });
+		return Arrays.asList(new Object[][] { { "abc@yahoo.com", true }, { "abc", true }, { "abc-100@yahoo.com", true },
+				{ "abc@.com.my", true }, });
 	}
-
 
 	@Test
 	public void emailTest() {
-		assertEquals(expected, object.validateEmail(input));
+		try {
+			assertEquals(expected, object.validateEmail(input));
+		} catch (UserRegistrationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

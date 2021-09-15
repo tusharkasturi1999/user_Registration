@@ -17,6 +17,7 @@ public class UserRegistration {
 		return pattern.matcher(fname).matches();
 	}
 
+	
 	// This is the main function
 	public static void main(String[] args) {
 		System.out.println("Enter First Name: ");
